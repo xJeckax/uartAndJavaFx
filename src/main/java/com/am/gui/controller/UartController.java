@@ -1,5 +1,6 @@
 package com.am.gui.controller;
 
+import com.am.serialport.MySerialPort;
 import com.am.serialport.SerialPortService;
 import com.am.serialport.listener.SerialPortReadDataListener;
 import com.fazecast.jSerialComm.SerialPort;
@@ -11,19 +12,22 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.input.KeyEvent;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import net.rgielen.fxweaver.core.FxmlView;
 import org.springframework.stereotype.Controller;
 
-import java.sql.SQLOutput;
 import java.util.Arrays;
 import java.util.List;
-
+@Slf4j
 @Controller
 @FxmlView("uart.fxml")
 @RequiredArgsConstructor
 public class UartController {
 
     private final SerialPortService serialPortService;
+
+    private final MySerialPort selectedPort;
+    private final SerialPortReadDataListener listener;
 
     @FXML
     private ChoiceBox<String> uartChoiceBox;
@@ -38,22 +42,24 @@ public class UartController {
 
     @FXML
     void toggleButtonHandler(ActionEvent event) {
-        SerialPort choicePort = null;
         List<SerialPort> serialPorts = Arrays.asList(SerialPort.getCommPorts());
-        for (SerialPort port : serialPorts) {
-            if (port.getDescriptivePortName().equals(uartChoiceBox.getValue())) {
-                choicePort = port;
+        if(selectedPort.getPort() == null) {
+            for (SerialPort port : serialPorts) {
+                if (port.getDescriptivePortName().equals(uartChoiceBox.getValue())) {
+                    selectedPort.setPort(port);
+                }
             }
         }
-        if (choicePort != null) {
-            if (choicePort.isOpen()) {
-                choicePort.closePort();
+
+        if (selectedPort.getPort() != null) {
+            if (!selectedPort.getPort().isOpen()) {
+                selectedPort.getPort().openPort();
+                selectedPort.getPort().addDataListener(listener);
+                log.info("Порт {} был открыт.", selectedPort.getPort().getSystemPortName());
+            }else{
+                selectedPort.getPort().closePort();
+                log.info("Порт {} был закрыт.", selectedPort.getPort().getSystemPortName());
             }
-            choicePort.openPort();
-            SerialPortReadDataListener listener = new SerialPortReadDataListener();
-            choicePort.addDataListener(listener);
-        }else{
-            System.out.println("Нет такого порта");
         }
     }
 
