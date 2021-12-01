@@ -25,7 +25,7 @@ public class UartController {
 
     private final SerialPortService serialPortService;
 
-    @FxmlView
+    @FXML
     private ChoiceBox<String> uartChoiceBox;
 
     @FXML
