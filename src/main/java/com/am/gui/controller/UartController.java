@@ -27,6 +27,7 @@ public class UartController {
     private final SerialPortService serialPortService;
 
     private final MySerialPort selectedPort;
+
     private final SerialPortReadMessageListener listener;
 
     @FXML
