@@ -4,5 +4,5 @@ import java.util.Map;
 
 public interface CommonParser {
 
-    Map<Integer,Double> parseReadDataFromArduino(String string);
+    Map<Integer,Double> parseDataFromArduino(String string);
 }
