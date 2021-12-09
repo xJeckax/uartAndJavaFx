@@ -16,8 +16,8 @@ import lombok.extern.slf4j.Slf4j;
 import net.rgielen.fxweaver.core.FxmlView;
 import org.springframework.stereotype.Controller;
 
-import java.util.Arrays;
 import java.util.List;
+
 @Slf4j
 @Controller
 @FxmlView("uart.fxml")
@@ -43,8 +43,8 @@ public class UartController {
 
     @FXML
     void toggleButtonHandler(ActionEvent event) {
-        List<SerialPort> serialPorts = Arrays.asList(SerialPort.getCommPorts());
-        if(selectedPort.getPort() == null) {
+        List<SerialPort> serialPorts = serialPortService.getComputerSerialPorts();
+        if (selectedPort.getPort() == null) {
             for (SerialPort port : serialPorts) {
                 if (port.getDescriptivePortName().equals(uartChoiceBox.getValue())) {
                     selectedPort.setPort(port);
@@ -54,10 +54,11 @@ public class UartController {
 
         if (selectedPort.getPort() != null) {
             if (!selectedPort.getPort().isOpen()) {
-                selectedPort.getPort().openPort();
                 selectedPort.getPort().addDataListener(listener);
+                selectedPort.getPort().openPort();
                 log.info("Порт {} был открыт.", selectedPort.getPort().getSystemPortName());
-            }else{
+            } else {
+                selectedPort.getPort().removeDataListener();
                 selectedPort.getPort().closePort();
                 log.info("Порт {} был закрыт.", selectedPort.getPort().getSystemPortName());
             }

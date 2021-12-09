@@ -1,13 +1,15 @@
 package com.am.serialport.listener;
 
 import com.am.serialport.data.SerialPortData;
-import com.am.serialport.parser.CommonParser;
 import com.am.serialport.parser.ParserDataFromArduino;
 import com.fazecast.jSerialComm.SerialPort;
 import com.fazecast.jSerialComm.SerialPortEvent;
+import com.fazecast.jSerialComm.SerialPortMessageListener;
 import com.fazecast.jSerialComm.SerialPortMessageListenerWithExceptions;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+
+import java.util.Map;
 
 @Component
 @RequiredArgsConstructor
@@ -15,28 +17,15 @@ public class SerialPortReadMessageListener implements SerialPortMessageListenerW
     private final ParserDataFromArduino parser;
     private final SerialPortData data;
 
-    /*public String byteToHex(byte num)
-    {
-        char[] hexDigits = new char[2];
-        hexDigits[0] = Character.forDigit((num >> 4) & 0xF, 16);
-        hexDigits[1] = Character.forDigit((num & 0xF), 16);
-        return new String(hexDigits);
-    }*/
-
-
-    @Override
-    public void catchException(Exception e) {
-        System.out.println(e.getMessage());
-    }
 
     @Override
     public byte[] getMessageDelimiter() {
-        return  new byte[]{Character.getDirectionality('$')};
+        return new byte[]{(byte) 0x3b, (byte) 0x24};
     }
 
     @Override
     public boolean delimiterIndicatesEndOfMessage() {
-        return true;
+        return false;
     }
 
     @Override
@@ -46,11 +35,14 @@ public class SerialPortReadMessageListener implements SerialPortMessageListenerW
 
     @Override
     public void serialEvent(SerialPortEvent serialPortEvent) {
-        byte[] message = serialPortEvent.getReceivedData();
-        /*for (byte b : message) {
+        byte[] uartMessage = serialPortEvent.getReceivedData();
+        String messageFromArduino = new String(uartMessage);
+        Map<Integer, Double> sensorToValue = parser.parseDataFromArduino(messageFromArduino);
+        data.addReadData(sensorToValue);
+    }
 
-            System.out.println((char) b);
-        }*/
-       System.out.print(message);
+    @Override
+    public void catchException(Exception e) {
+        e.printStackTrace();
     }
 }
