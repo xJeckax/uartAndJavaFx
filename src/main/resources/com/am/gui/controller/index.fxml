@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.am.gui.controller.IndexController">
    <children>
@@ -16,5 +18,75 @@
           </Menu>
         </menus>
       </MenuBar>
+      <Label fx:id="sensor1" alignment="CENTER" contentDisplay="CENTER" layoutX="71.0" layoutY="84.0" prefHeight="34.0" prefWidth="42.0" style="-fx-background-color: #34ff0c; -fx-border-color: #000000;" text="Label" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" wrapText="true">
+         <font>
+            <Font name="System Italic" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="sensor2" alignment="CENTER" contentDisplay="CENTER" layoutX="127.0" layoutY="84.0" prefHeight="34.0" prefWidth="42.0" style="-fx-background-color: #34ff0c; -fx-border-color: #000000;" text="Label" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" wrapText="true">
+         <font>
+            <Font name="System Italic" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="sensor3" alignment="CENTER" contentDisplay="CENTER" layoutX="179.0" layoutY="84.0" prefHeight="34.0" prefWidth="42.0" style="-fx-background-color: #34ff0c; -fx-border-color: #000000;" text="Label" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" wrapText="true">
+         <font>
+            <Font name="System Italic" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="sensor5" alignment="CENTER" contentDisplay="CENTER" layoutX="290.0" layoutY="84.0" prefHeight="34.0" prefWidth="42.0" style="-fx-background-color: #34ff0c; -fx-border-color: #000000;" text="Label" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" wrapText="true">
+         <font>
+            <Font name="System Italic" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="sensor4" alignment="CENTER" contentDisplay="CENTER" layoutX="235.0" layoutY="84.0" prefHeight="34.0" prefWidth="42.0" style="-fx-background-color: #34ff0c; -fx-border-color: #000000;" text="Label" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" wrapText="true">
+         <font>
+            <Font name="System Italic" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="sensor6" alignment="CENTER" contentDisplay="CENTER" layoutX="344.0" layoutY="84.0" prefHeight="34.0" prefWidth="42.0" style="-fx-background-color: #34ff0c; -fx-border-color: #000000;" text="Label" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" wrapText="true">
+         <font>
+            <Font name="System Italic" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="sensor8" alignment="CENTER" contentDisplay="CENTER" layoutX="71.0" layoutY="155.0" prefHeight="34.0" prefWidth="42.0" style="-fx-background-color: #34ff0c; -fx-border-color: #000000;" text="Label" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" wrapText="true">
+         <font>
+            <Font name="System Italic" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="sensor9" alignment="CENTER" contentDisplay="CENTER" layoutX="127.0" layoutY="155.0" prefHeight="34.0" prefWidth="42.0" style="-fx-background-color: #34ff0c; -fx-border-color: #000000;" text="Label" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" wrapText="true">
+         <font>
+            <Font name="System Italic" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="sensor10" alignment="CENTER" contentDisplay="CENTER" layoutX="179.0" layoutY="155.0" prefHeight="34.0" prefWidth="42.0" style="-fx-background-color: #34ff0c; -fx-border-color: #000000;" text="Label" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" wrapText="true">
+         <font>
+            <Font name="System Italic" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="sensor11" alignment="CENTER" contentDisplay="CENTER" layoutX="235.0" layoutY="155.0" prefHeight="34.0" prefWidth="42.0" style="-fx-background-color: #34ff0c; -fx-border-color: #000000;" text="Label" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" wrapText="true">
+         <font>
+            <Font name="System Italic" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="sensor7" alignment="CENTER" contentDisplay="CENTER" layoutX="400.0" layoutY="84.0" prefHeight="34.0" prefWidth="42.0" style="-fx-background-color: #34ff0c; -fx-border-color: #000000;" text="Label" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" wrapText="true">
+         <font>
+            <Font name="System Italic" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="sensor13" alignment="CENTER" contentDisplay="CENTER" layoutX="344.0" layoutY="155.0" prefHeight="34.0" prefWidth="42.0" style="-fx-background-color: #34ff0c; -fx-border-color: #000000;" text="Label" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" wrapText="true">
+         <font>
+            <Font name="System Italic" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="sensor12" alignment="CENTER" contentDisplay="CENTER" layoutX="290.0" layoutY="155.0" prefHeight="34.0" prefWidth="42.0" style="-fx-background-color: #34ff0c; -fx-border-color: #000000;" text="Label" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" wrapText="true">
+         <font>
+            <Font name="System Italic" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="sensor14" alignment="CENTER" contentDisplay="CENTER" layoutX="400.0" layoutY="155.0" prefHeight="34.0" prefWidth="42.0" style="-fx-background-color: #34ff0c; -fx-border-color: #000000;" text="Label" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" wrapText="true">
+         <font>
+            <Font name="System Italic" size="13.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

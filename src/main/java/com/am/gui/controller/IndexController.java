@@ -1,5 +1,6 @@
 package com.am.gui.controller;
 
+import com.am.serialport.data.SerialPortData;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
@@ -21,6 +22,7 @@ import org.springframework.stereotype.Controller;
 public class IndexController {
 
     private final FxWeaver fxWeaver;
+    private final SerialPortData data;
 
     @FXML
     private Menu indexMenu;
