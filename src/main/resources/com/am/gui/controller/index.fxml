@@ -152,6 +152,7 @@
       <Label layoutX="348.0" layoutY="171.0" text="Sensor 12" />
       <Label layoutX="414.0" layoutY="171.0" text="Sensor 13" />
       <Label layoutX="480.0" layoutY="171.0" text="Sensor 14" />
+<<<<<<< HEAD
       <Button fx:id="setValues" alignment="CENTER" contentDisplay="CENTER" layoutX="452.0" layoutY="300.0" mnemonicParsing="false" onAction="#setValuesRestriction" text="set-values">
          <font>
             <Font size="15.0" />
@@ -163,5 +164,7 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
+=======
+>>>>>>> 31701f92ec66efe71a7999cdf0d7b442c6aad8f7
    </children>
 </AnchorPane>

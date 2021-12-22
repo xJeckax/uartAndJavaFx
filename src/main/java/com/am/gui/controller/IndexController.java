@@ -169,8 +169,6 @@ public class IndexController {
         UpdateTextFields timerTask = new UpdateTextFields();
         Timer timer = new Timer(true);
         timer.scheduleAtFixedRate(timerTask, 0, 500);
-
-
     }
 
     class UpdateTextFields extends TimerTask {
