@@ -10,19 +10,20 @@ import java.util.Map;
 
 @Component
 @NoArgsConstructor
-public class ParserDataFromArduino implements CommonParser{
+public class ParserDataFromArduino implements CommonParser {
     @Override
-    public Map<Integer, Double> parseReadDataFromArduino(String string) {
-        try{
-            Map<Integer,Double> resultParse = new HashMap<>();
-            String[] strings = string.split(",");
-            for (String s : strings) {
-                String[] intAndFloat = s.split(":");
-                resultParse.put(Integer.parseInt(intAndFloat[0]), Double.parseDouble((intAndFloat[1])));
+    public Map<Integer, Double> parseDataFromArduino(String string) {
+        try {
+            Map<Integer, Double> resultParse = new HashMap<>();
+            int count = 0;
+            String[] sensorValues = string.substring(3).split(" ");
+            for (String s : sensorValues) {
+                resultParse.put(count, Double.parseDouble(s));
+                count++;
             }
 
             return resultParse;
-        }catch (ApplicationException e){
+        } catch (ApplicationException e) {
             System.out.println(e.getMessage());
         }
         return Collections.emptyMap();

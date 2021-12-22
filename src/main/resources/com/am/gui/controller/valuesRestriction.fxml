@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="367.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.am.gui.controller.SendToArduinoController">
+   <children>
+      <Label layoutX="122.0" layoutY="14.0" text="Set values of restriction" />
+      <TextField fx:id="section1" layoutX="184.0" layoutY="43.0">
+         <font>
+            <Font name="Arial Black" size="10.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="section2" layoutX="184.0" layoutY="68.0">
+         <font>
+            <Font name="Arial Black" size="10.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="section3" layoutX="184.0" layoutY="92.0">
+         <font>
+            <Font name="Arial Black" size="10.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="section4" layoutX="184.0" layoutY="117.0">
+         <font>
+            <Font name="Arial Black" size="10.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="section10" layoutX="183.0" layoutY="264.0">
+         <font>
+            <Font name="Arial Black" size="10.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="section5" layoutX="183.0" layoutY="142.0">
+         <font>
+            <Font name="Arial Black" size="10.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="section6" layoutX="183.0" layoutY="167.0">
+         <font>
+            <Font name="Arial Black" size="10.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="section8" layoutX="184.0" layoutY="216.0">
+         <font>
+            <Font name="Arial Black" size="10.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="section7" layoutX="184.0" layoutY="192.0">
+         <font>
+            <Font name="Arial Black" size="10.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="section9" layoutX="183.0" layoutY="240.0">
+         <font>
+            <Font name="Arial Black" size="10.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="section11" layoutX="183.0" layoutY="288.0">
+         <font>
+            <Font name="Arial Black" size="10.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="section13" layoutX="184.0" layoutY="336.0">
+         <font>
+            <Font name="Arial Black" size="10.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="section12" layoutX="184.0" layoutY="312.0">
+         <font>
+            <Font name="Arial Black" size="10.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="section14" layoutX="184.0" layoutY="360.0">
+         <font>
+            <Font name="Arial Black" size="10.0" />
+         </font>
+      </TextField>
+      <Button fx:id="setValues" layoutX="30.0" layoutY="41.0" mnemonicParsing="false" onAction="#setValues" text="send" />
+      <Label layoutX="122.0" layoutY="45.0" text="Section 1" />
+      <Label layoutX="122.0" layoutY="70.0" text="Section 2" />
+      <Label layoutX="122.0" layoutY="94.0" text="Section 3" />
+      <Label layoutX="122.0" layoutY="119.0" text="Section 4" />
+      <Label layoutX="122.0" layoutY="144.0" text="Section 5" />
+      <Label layoutX="122.0" layoutY="169.0" text="Section 6" />
+      <Label layoutX="122.0" layoutY="194.0" text="Section 7" />
+      <Label layoutX="122.0" layoutY="218.0" text="Section 8" />
+      <Label layoutX="122.0" layoutY="242.0" text="Section 9" />
+      <Label layoutX="122.0" layoutY="266.0" text="Section 10" />
+      <Label layoutX="122.0" layoutY="290.0" text="Section 11" />
+      <Label layoutX="122.0" layoutY="314.0" text="Section 12" />
+      <Label layoutX="122.0" layoutY="338.0" text="Section 13" />
+      <Label layoutX="122.0" layoutY="362.0" text="Section 14" />
+   </children>
+</AnchorPane>
