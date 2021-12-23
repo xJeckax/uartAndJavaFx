@@ -1,4 +1,4 @@
-package com.am.serialport.data;
+package com.am.models;
 
 import lombok.NoArgsConstructor;
 import org.springframework.context.annotation.Scope;
@@ -10,21 +10,21 @@ import java.util.concurrent.ConcurrentHashMap;
 @Component
 @Scope("singleton")
 @NoArgsConstructor
-public class SerialPortData {
-    private final Map<Integer, Double> readDataFromArduino = new ConcurrentHashMap<>();
+public class ValuesRestrictionData {
+    private final Map<Integer, Double> valuesRestriction = new ConcurrentHashMap<>();
 
     {
         for (int i = 0; i < 14; i++) {
-            readDataFromArduino.put(i, 0.0);
+            valuesRestriction.put(i, 0.0);
         }
     }
 
     public synchronized void addReadData(Map<Integer, Double> data) {
-        readDataFromArduino.clear();
-        readDataFromArduino.putAll(data);
+        valuesRestriction.clear();
+        valuesRestriction.putAll(data);
     }
 
-    public synchronized Map<Integer, Double> getReadDataFromArduino() {
-        return readDataFromArduino;
+    public synchronized Map<Integer, Double> getValuesRestriction() {
+        return valuesRestriction;
     }
 }

@@ -1,7 +1,7 @@
 package com.am.gui;
 
 import com.am.AppStart;
-import com.am.gui.controller.IndexController;
+import com.am.gui.javafxcontroller.IndexController;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Group;
@@ -39,6 +39,9 @@ public class JavaFXApplication extends Application {
 
         Scene scene = new Scene(group);
         primaryStage.setScene(scene);
+        primaryStage.setTitle("Artificial Uterus");
+        primaryStage.setResizable(true);
+        primaryStage.setOnCloseRequest(windowEvent -> Platform.exit());
         primaryStage.show();
     }
 

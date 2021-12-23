@@ -1,24 +1,34 @@
-package com.am.gui.controller;
+package com.am.gui.javafxcontroller;
 
+import com.am.models.ValuesRestrictionData;
 import com.am.serialport.SendDataToArduino;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Group;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import net.rgielen.fxweaver.core.FxWeaver;
 import net.rgielen.fxweaver.core.FxmlView;
-import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.Map;
 
 @Slf4j
-@Controller
+@Service
 @FxmlView("valuesRestriction.fxml")
 @RequiredArgsConstructor
 public class SendToArduinoController {
+    private Stage stageDataControl;
+    private final FxWeaver fxWeaver;
     private final SendDataToArduino sendDataToArduino;
+    private final ValuesRestrictionData valuesRestrictionData;
 
     @FXML
     private TextField section1;
@@ -65,8 +75,45 @@ public class SendToArduinoController {
     @FXML
     private Button setValues;
 
+    public void restoreValues(Map<Integer, Double> rememberedValues){
+        section1.textProperty().setValue(rememberedValues.get(0).toString());
+        section2.textProperty().setValue(rememberedValues.get(1).toString());
+        section3.textProperty().setValue(rememberedValues.get(2).toString());
+        section4.textProperty().setValue(rememberedValues.get(3).toString());
+        section5.textProperty().setValue(rememberedValues.get(4).toString());
+        section6.textProperty().setValue(rememberedValues.get(5).toString());
+        section7.textProperty().setValue(rememberedValues.get(6).toString());
+        section8.textProperty().setValue(rememberedValues.get(7).toString());
+        section9.textProperty().setValue(rememberedValues.get(8).toString());
+        section10.textProperty().setValue(rememberedValues.get(9).toString());
+        section11.textProperty().setValue(rememberedValues.get(10).toString());
+        section12.textProperty().setValue(rememberedValues.get(11).toString());
+        section13.textProperty().setValue(rememberedValues.get(12).toString());
+        section14.textProperty().setValue(rememberedValues.get(13).toString());
+    }
+
     @FXML
-    void setValues(ActionEvent event) {
+    private void dataControl(ActionEvent event) {
+        if (stageDataControl == null) {
+            Parent root = fxWeaver.loadView(DataControlController.class);
+            stageDataControl = new Stage();
+            BorderPane borderPane = new BorderPane();
+            borderPane.setCenter(root);
+
+            Group group = new Group();
+            group.getChildren().add(borderPane);
+
+            Scene scene = new Scene(group);
+            stageDataControl.setScene(scene);
+            stageDataControl.setAlwaysOnTop(true);
+            stageDataControl.show();
+        } else {
+            stageDataControl.show();
+        }
+    }
+
+    @FXML
+    private void setValues(ActionEvent event) {
         try {
             Map<Integer, Double> valuesRestriction = new HashMap<>();
             valuesRestriction.put(0, Double.parseDouble(section1.textProperty().getValue()));
@@ -84,6 +131,7 @@ public class SendToArduinoController {
             valuesRestriction.put(12, Double.parseDouble(section13.textProperty().getValue()));
             valuesRestriction.put(13, Double.parseDouble(section14.textProperty().getValue()));
 
+            valuesRestrictionData.addReadData(valuesRestriction);
             sendDataToArduino.write(valuesRestriction);
         } catch (NumberFormatException e) {
             log.info("use next format 2.0 or 2 or 2.24");
@@ -91,7 +139,7 @@ public class SendToArduinoController {
     }
 
     @FXML
-    public void initialize(){
+    private void initialize() {
         section1.textProperty().setValue("0.0");
         section2.textProperty().setValue("0.0");
         section3.textProperty().setValue("0.0");
