@@ -5,7 +5,7 @@
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="114.0" prefWidth="288.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.am.gui.controller.UartController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="114.0" prefWidth="288.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.am.gui.javafxcontroller.UartController">
    <children>
       <ChoiceBox fx:id="uartChoiceBox" layoutX="14.0" layoutY="41.0" onKeyPressed="#ChoiceBoxHandler" prefWidth="150.0" />
       <ToggleButton fx:id="uartToggleButton" contentDisplay="CENTER" ellipsisString="" layoutX="168.0" layoutY="41.0" mnemonicParsing="false" onAction="#toggleButtonHandler" text="Открыть/Закрыть" textFill="#000000fa" textOverrun="CLIP" />
