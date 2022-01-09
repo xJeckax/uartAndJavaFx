@@ -175,20 +175,37 @@ public class IndexController {
         @Override
         public void run() {
             try {
-                property1.setValue(dataFromArduino.getReadDataFromArduino().getOrDefault(0, 0.0).toString());
-                property2.setValue(dataFromArduino.getReadDataFromArduino().getOrDefault(1, 0.0).toString());
-                property3.setValue(dataFromArduino.getReadDataFromArduino().getOrDefault(2, 0.0).toString());
-                property4.setValue(dataFromArduino.getReadDataFromArduino().getOrDefault(3, 0.0).toString());
-                property5.setValue(dataFromArduino.getReadDataFromArduino().getOrDefault(4, 0.0).toString());
-                property6.setValue(dataFromArduino.getReadDataFromArduino().getOrDefault(5, 0.0).toString());
-                property7.setValue(dataFromArduino.getReadDataFromArduino().getOrDefault(6, 0.0).toString());
-                property8.setValue(dataFromArduino.getReadDataFromArduino().getOrDefault(7, 0.0).toString());
-                property9.setValue(dataFromArduino.getReadDataFromArduino().getOrDefault(8, 0.0).toString());
-                property10.setValue(dataFromArduino.getReadDataFromArduino().getOrDefault(9, 0.0).toString());
-                property11.setValue(dataFromArduino.getReadDataFromArduino().getOrDefault(10, 0.0).toString());
-                property12.setValue(dataFromArduino.getReadDataFromArduino().getOrDefault(11, 0.0).toString());
-                property13.setValue(dataFromArduino.getReadDataFromArduino().getOrDefault(12, 0.0).toString());
-                property14.setValue(dataFromArduino.getReadDataFromArduino().getOrDefault(13, 0.0).toString());
+                if (dataFromArduino.getReadDataFromArduino().isEmpty()) {
+                    property1.setValue(dataFromArduino.getReadDataFromArduino().getOrDefault(0, 0.0).toString());
+                    property2.setValue(dataFromArduino.getReadDataFromArduino().getOrDefault(1, 0.0).toString());
+                    property3.setValue(dataFromArduino.getReadDataFromArduino().getOrDefault(2, 0.0).toString());
+                    property4.setValue(dataFromArduino.getReadDataFromArduino().getOrDefault(3, 0.0).toString());
+                    property5.setValue(dataFromArduino.getReadDataFromArduino().getOrDefault(4, 0.0).toString());
+                    property6.setValue(dataFromArduino.getReadDataFromArduino().getOrDefault(5, 0.0).toString());
+                    property7.setValue(dataFromArduino.getReadDataFromArduino().getOrDefault(6, 0.0).toString());
+                    property8.setValue(dataFromArduino.getReadDataFromArduino().getOrDefault(7, 0.0).toString());
+                    property9.setValue(dataFromArduino.getReadDataFromArduino().getOrDefault(8, 0.0).toString());
+                    property10.setValue(dataFromArduino.getReadDataFromArduino().getOrDefault(9, 0.0).toString());
+                    property11.setValue(dataFromArduino.getReadDataFromArduino().getOrDefault(10, 0.0).toString());
+                    property12.setValue(dataFromArduino.getReadDataFromArduino().getOrDefault(11, 0.0).toString());
+                    property13.setValue(dataFromArduino.getReadDataFromArduino().getOrDefault(12, 0.0).toString());
+                    property14.setValue(dataFromArduino.getReadDataFromArduino().getOrDefault(13, 0.0).toString());
+                } else {
+                    property1.setValue(dataFromArduino.getReadDataFromArduino().getOrDefault(0, Double.parseDouble(property1.getValue())).toString());
+                    property2.setValue(dataFromArduino.getReadDataFromArduino().getOrDefault(1, Double.parseDouble(property2.getValue())).toString());
+                    property3.setValue(dataFromArduino.getReadDataFromArduino().getOrDefault(2, Double.parseDouble(property3.getValue())).toString());
+                    property4.setValue(dataFromArduino.getReadDataFromArduino().getOrDefault(3, Double.parseDouble(property4.getValue())).toString());
+                    property5.setValue(dataFromArduino.getReadDataFromArduino().getOrDefault(4, Double.parseDouble(property5.getValue())).toString());
+                    property6.setValue(dataFromArduino.getReadDataFromArduino().getOrDefault(5, Double.parseDouble(property6.getValue())).toString());
+                    property7.setValue(dataFromArduino.getReadDataFromArduino().getOrDefault(6, Double.parseDouble(property7.getValue())).toString());
+                    property8.setValue(dataFromArduino.getReadDataFromArduino().getOrDefault(7, Double.parseDouble(property8.getValue())).toString());
+                    property9.setValue(dataFromArduino.getReadDataFromArduino().getOrDefault(8, Double.parseDouble(property9.getValue())).toString());
+                    property10.setValue(dataFromArduino.getReadDataFromArduino().getOrDefault(9, Double.parseDouble(property10.getValue())).toString());
+                    property11.setValue(dataFromArduino.getReadDataFromArduino().getOrDefault(10, Double.parseDouble(property11.getValue())).toString());
+                    property12.setValue(dataFromArduino.getReadDataFromArduino().getOrDefault(11, Double.parseDouble(property12.getValue())).toString());
+                    property13.setValue(dataFromArduino.getReadDataFromArduino().getOrDefault(12, Double.parseDouble(property13.getValue())).toString());
+                    property14.setValue(dataFromArduino.getReadDataFromArduino().getOrDefault(13, Double.parseDouble(property14.getValue())).toString());
+                }
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }

@@ -13,12 +13,6 @@ import java.util.concurrent.ConcurrentHashMap;
 public class SerialPortData {
     private final Map<Integer, Double> readDataFromArduino = new ConcurrentHashMap<>();
 
-    {
-        for (int i = 0; i < 14; i++) {
-            readDataFromArduino.put(i, 0.0);
-        }
-    }
-
     public synchronized void addReadData(Map<Integer, Double> data) {
         readDataFromArduino.clear();
         readDataFromArduino.putAll(data);

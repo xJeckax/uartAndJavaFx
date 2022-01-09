@@ -24,7 +24,9 @@ public class ParserDataFromArduino implements CommonParser {
             for (String s : sensorValues) {
                 Matcher matcher = pattern.matcher(s);
                 if (matcher.find()) {
-                    parseResult.put(count, Double.parseDouble(s.substring(matcher.start(),matcher.end())));
+                    parseResult.put(count, Double.parseDouble(s.substring(matcher.start(), matcher.end())));
+                } else {
+                    parseResult.put(count, 0.00);
                 }
                 count++;
             }

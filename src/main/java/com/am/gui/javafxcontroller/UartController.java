@@ -3,7 +3,6 @@ package com.am.gui.javafxcontroller;
 import com.am.serialport.MySerialPort;
 import com.am.serialport.SerialPortService;
 import com.am.serialport.listener.SerialPortReadMessageListener;
-import com.am.serialport.listener.SerialPortWriteListener;
 import com.fazecast.jSerialComm.SerialPort;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -30,7 +29,6 @@ public class UartController {
     private final MySerialPort selectedPort;
 
     private final SerialPortReadMessageListener readListener;
-    private final SerialPortWriteListener writeListener;
 
     @FXML
     private ChoiceBox<String> uartChoiceBox;
@@ -57,7 +55,6 @@ public class UartController {
         if (selectedPort.getPort() != null) {
             if (!selectedPort.getPort().isOpen()) {
                 selectedPort.getPort().addDataListener(readListener);
-                selectedPort.getPort().addDataListener(writeListener);
                 selectedPort.getPort().setComPortTimeouts(SerialPort.TIMEOUT_WRITE_BLOCKING, 0, 200);
                 selectedPort.getPort().setComPortParameters(9600, 8, SerialPort.ONE_STOP_BIT, SerialPort.NO_PARITY);
                 selectedPort.getPort().openPort();
