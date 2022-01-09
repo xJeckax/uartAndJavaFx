@@ -14,8 +14,8 @@ import java.util.Map;
 @Component
 @RequiredArgsConstructor
 public class SerialPortReadMessageListener implements SerialPortMessageListenerWithExceptions {
-    private final ParserDataFromArduino parser;
-    private final SerialPortData data;
+    private final ParserDataFromArduino parseDataFromArduino;
+    private final SerialPortData serialPortData;
 
 
     @Override
@@ -37,8 +37,8 @@ public class SerialPortReadMessageListener implements SerialPortMessageListenerW
     public void serialEvent(SerialPortEvent serialPortEvent) {
         byte[] uartMessage = serialPortEvent.getReceivedData();
         String messageFromArduino = new String(uartMessage);
-        Map<Integer, Double> sensorToValue = parser.parseDataFromArduino(messageFromArduino);
-        data.addReadData(sensorToValue);
+        Map<Integer, Double> sensorToValue = parseDataFromArduino.parseDataFromArduino(messageFromArduino);
+        serialPortData.addReadData(sensorToValue);
     }
 
     @Override
