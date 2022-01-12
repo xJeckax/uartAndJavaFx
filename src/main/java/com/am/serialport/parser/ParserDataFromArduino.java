@@ -20,7 +20,7 @@ public class ParserDataFromArduino implements CommonParser {
             Pattern pattern = Pattern.compile("[\\d][.][\\d{2}]");
 
             int count = 0;
-            String[] sensorValues = string.substring(3).split(" ");
+            String[] sensorValues = string.substring(1).split(" ");
             for (String s : sensorValues) {
                 Matcher matcher = pattern.matcher(s);
                 if (matcher.find()) {
