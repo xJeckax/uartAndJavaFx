@@ -1,7 +1,10 @@
 package com.am.gui.javafxcontroller;
 
+import com.am.models.ExperimentData;
 import com.am.models.ValuesRestrictionData;
 import com.am.serialport.SendDataToArduino;
+import com.am.serialport.data.SerialPortData;
+import com.am.service.ExperimentDataService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
@@ -10,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,6 +21,8 @@ import net.rgielen.fxweaver.core.FxWeaver;
 import net.rgielen.fxweaver.core.FxmlView;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,8 +33,10 @@ import java.util.Map;
 public class SendToArduinoController {
     private Stage stageDataControl;
     private final FxWeaver fxWeaver;
+    private final SerialPortData serialPortData;
     private final SendDataToArduino sendDataToArduino;
     private final ValuesRestrictionData valuesRestrictionData;
+    private final ExperimentDataService experimentDataService;
 
     @FXML
     private TextField section1;
@@ -73,9 +81,17 @@ public class SendToArduinoController {
     private TextField section14;
 
     @FXML
-    private Button setValues;
+    private TextField directory;
 
-    public void restoreValues(Map<Integer, Double> rememberedValues){
+    @FXML
+    private Button selectDirectory;
+
+    @FXML
+    void loadExperiment(ActionEvent event) {
+
+    }
+
+    public void restoreValues(Map<Integer, Double> rememberedValues) {
         section1.textProperty().setValue(rememberedValues.get(0).toString());
         section2.textProperty().setValue(rememberedValues.get(1).toString());
         section3.textProperty().setValue(rememberedValues.get(2).toString());
@@ -98,8 +114,7 @@ public class SendToArduinoController {
             Parent root = fxWeaver.loadView(DataControlController.class);
             stageDataControl = new Stage();
             BorderPane borderPane = new BorderPane();
-            borderPane.setCenter(root);
-
+            borderPane.setCenter(root); 
             Group group = new Group();
             group.getChildren().add(borderPane);
 
@@ -109,6 +124,27 @@ public class SendToArduinoController {
             stageDataControl.show();
         } else {
             stageDataControl.show();
+        }
+    }
+
+
+    @FXML
+    void saveValuesInFile(ActionEvent event) {
+        ExperimentData data = new ExperimentData();
+        mergeExperimentData(data);
+
+        if (!directory.textProperty().isEmpty().get()) {
+            experimentDataService.save(directory.getText(), data);
+        }
+    }
+
+    @FXML
+    void selectDirectory(ActionEvent event) {
+        DirectoryChooser directoryChooser = new DirectoryChooser();
+
+        File file = directoryChooser.showDialog(selectDirectory.getScene().getWindow());
+        if (file != null) {
+            directory.setText(file.getAbsolutePath());
         }
     }
 
@@ -138,6 +174,12 @@ public class SendToArduinoController {
         }
     }
 
+    private void mergeExperimentData(ExperimentData data) {
+        data.setSensorsData(serialPortData.getReadDataSensors());
+        data.setRestrictions(serialPortData.getReadDataRestrictions());
+        data.setTimestamp(new Date());
+    }
+
     @FXML
     private void initialize() {
         section1.textProperty().setValue("0.0");
@@ -154,5 +196,7 @@ public class SendToArduinoController {
         section12.textProperty().setValue("0.0");
         section13.textProperty().setValue("0.0");
         section14.textProperty().setValue("0.0");
+
+        directory.setText("Please, select a directory");
     }
 }

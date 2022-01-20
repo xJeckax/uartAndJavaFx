@@ -56,7 +56,8 @@ public class UartController {
             if (!selectedPort.getPort().isOpen()) {
                 selectedPort.getPort().addDataListener(readListener);
                 selectedPort.getPort().setComPortTimeouts(SerialPort.TIMEOUT_WRITE_BLOCKING, 0, 200);
-                selectedPort.getPort().setComPortParameters(9600, 8, SerialPort.ONE_STOP_BIT, SerialPort.NO_PARITY);
+                selectedPort.getPort().setBaudRate(9600);
+                //selectedPort.getPort().setComPortParameters(9600, 8, SerialPort., SerialPort.NO_PARITY);
                 selectedPort.getPort().openPort();
                 log.info("The port {} was open.", selectedPort.getPort().getSystemPortName());
             } else {

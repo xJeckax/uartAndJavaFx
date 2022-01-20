@@ -39,6 +39,8 @@ public class MySerialPort {
     @PreDestroy
     private void destroy() {
         port.removeDataListener();
-        port.closePort();
+        if (port != null) {
+            port.closePort();
+        }
     }
 }
