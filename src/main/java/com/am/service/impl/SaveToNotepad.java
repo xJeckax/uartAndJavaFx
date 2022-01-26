@@ -18,17 +18,13 @@ public class SaveToNotepad implements SaveService {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
             String experiment = objectMapper.writeValueAsString(data);
-
-            StringBuilder sb = new StringBuilder(experiment);
-            sb.append(System.lineSeparator());
-
             String fileName = "\\experiment.txt";
             File file = new File(path + fileName);
             if (file.createNewFile()) {
                 log.info("File has been created");
             }
             OutputStream fileWriter = new FileOutputStream(file,true);
-            fileWriter.write(sb.toString().getBytes(StandardCharsets.UTF_8));
+            fileWriter.write(experiment.concat(System.lineSeparator()).getBytes(StandardCharsets.UTF_8));
             fileWriter.flush();
             fileWriter.close();
         } catch (Exception e) {
