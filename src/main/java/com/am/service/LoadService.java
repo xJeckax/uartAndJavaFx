@@ -4,7 +4,6 @@ import com.am.models.ExperimentData;
 
 import java.util.List;
 
-public interface ExperimentDataService {
-    void save(String path, ExperimentData data);
+public interface LoadService {
     List<ExperimentData> load(String path);
 }

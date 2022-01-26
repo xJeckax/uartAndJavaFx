@@ -15,6 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import net.rgielen.fxweaver.core.FxWeaver;
@@ -31,6 +32,8 @@ import java.util.Map;
 @FxmlView("valuesRestriction.fxml")
 @RequiredArgsConstructor
 public class SendToArduinoController {
+    @Getter
+    private Stage experimentFile;
     private Stage stageDataControl;
     private final FxWeaver fxWeaver;
     private final SerialPortData serialPortData;
@@ -81,6 +84,7 @@ public class SendToArduinoController {
     private TextField section14;
 
     @FXML
+    @Getter
     private TextField directory;
 
     @FXML
@@ -88,7 +92,21 @@ public class SendToArduinoController {
 
     @FXML
     void loadExperiment(ActionEvent event) {
+        if (experimentFile == null) {
+            Parent root = fxWeaver.loadView(ExperimentFileController.class);
+            experimentFile = new Stage();
+            BorderPane borderPane = new BorderPane();
+            borderPane.setCenter(root);
+            Group group = new Group();
+            group.getChildren().add(borderPane);
 
+            Scene scene = new Scene(group);
+            experimentFile.setScene(scene);
+            experimentFile.setAlwaysOnTop(true);
+            experimentFile.show();
+        } else {
+            experimentFile.show();
+        }
     }
 
     public void restoreValues(Map<Integer, Double> rememberedValues) {
@@ -114,7 +132,7 @@ public class SendToArduinoController {
             Parent root = fxWeaver.loadView(DataControlController.class);
             stageDataControl = new Stage();
             BorderPane borderPane = new BorderPane();
-            borderPane.setCenter(root); 
+            borderPane.setCenter(root);
             Group group = new Group();
             group.getChildren().add(borderPane);
 

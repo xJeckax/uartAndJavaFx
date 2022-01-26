@@ -4,6 +4,8 @@ import com.am.serialport.MySerialPort;
 import com.am.serialport.data.SerialPortData;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
 import javafx.scene.Parent;
